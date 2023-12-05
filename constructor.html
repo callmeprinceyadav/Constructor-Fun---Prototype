@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h>Constructor Fun</h>
+</body>
+</html>
+<script>
+        function Bank_Accont(Ac,name,type,balance){
+        this.Account_Number = Ac;
+        this.name = name ;
+        this.Account_Type  = type;
+        this.balance = balance;
+
+    }
+
+
+
+function Deposit(Amount){
+    this.balance += Amount;
+
+}
+
+
+function Withdraw(Amount){
+    
+    if(this.balance - Amount >= 1){
+        this.balance -= Amount
+    }
+    else{
+        console.log(`Insufficient Balance of ${this.name} ,can't Withdraw money`)
+    }
+}
+
+
+function Check_Bal(Amount){
+    let amount = this.balance 
+    console.log(`Balance of ${this.name} is ${this.balance}`)
+    return amount
+}
+
+
+function IsActive(Amount){
+
+    if(this.balance >= 500){
+
+        console.log(`${this.name}'s Bank Account is Active!`)
+    }
+    else{
+        console.log(`${this.name}'s Bank Account is not Active!`)
+    }
+}   
+
+
+    let p1 = new Bank_Accont(2345678909,"Prince kumar","Saving Account",100000)
+    let p2 = new Bank_Accont(3573543846,"Rajesh kumar","Current Account",344553)
+    let p3 = new Bank_Accont(2345678909,"Ankit kumar","Current Account",19450)
+    let p4 = new Bank_Accont(2345678909,"Amit kumar","Current Account",43530)
+    let p5 = new Bank_Accont(2345678909,"Deepak kumar","Saving Account",0)
+    let p6 = new Bank_Accont(2345678909,"Rahul kumar","Current Account",134200)
+    let p7 = new Bank_Accont(2345678909,"Anshika Kumari","Saving Account",242100)
+
+
+console.log(p1)
+console.log(p2)
+console.log(p3)
+console.log(p4)
+console.log(p5)
+console.log(p6)
+console.log(p7)
+    
+    
+    
+    
+    
+
+
+
+
+    Deposit.call(p1,1000)
+    Deposit.call(p2,3000)
+    Deposit.call(p3,500)
+    Deposit.call(p4,1000)
+    Deposit.call(p5,1000)
+    Deposit.call(p6,1000)
+    Deposit.call(p7,1000)
+    
+    // Withdrawal Operations on All Accounts >>
+    
+    Withdraw.call(p1,1000)
+    Withdraw.call(p2,1000)
+    Withdraw.call(p3,500)
+    Withdraw.call(p4,500)
+    Withdraw.call(p5,5000)
+    Withdraw.call(p6,500)
+    Withdraw.call(p7,500)
+    
+    // Check Balance Operations on all Accounts >>
+    
+    Check_Bal.call(p1)
+    Check_Bal.call(p2)
+    Check_Bal.call(p3)
+    Check_Bal.call(p4)
+    Check_Bal.call(p5)
+    Check_Bal.call(p6)
+    Check_Bal.call(p7)
+
+    
+    // is account Active operation on All Accounts >>
+    IsActive.call(p1)
+    IsActive.call(p2)
+    IsActive.call(p3)
+    IsActive.call(p4)
+    IsActive.call(p5)
+    IsActive.call(p6)
+    IsActive.call(p7)
+</script>
