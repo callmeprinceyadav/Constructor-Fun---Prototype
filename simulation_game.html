@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>PROTOTYPE</h1>
+    <h2>SIMULATION GAME</h2>
+</body>
+</html>
+
+<script>
+
+    function Vehicle(brand, model, speed, fuelType){
+        this.brand = brand;
+        this.model = model;
+        this.speed = speed;
+        this.fuelType = fuelType;
+    }
+
+    Vehicle.prototype.accelerate = function(speed){
+        this.speed += speed
+        console.log(`${this.brand} ${this.model} is Accelerating . Current Speeed: ${this.speed}`
+        )
+        
+        
+    }
+    Vehicle.prototype.brake = function(Deaccelerate){
+        this.speed -= Deaccelerate
+        if (this.speed <= 0){
+            console.log(`${this.brand} ${this.model} Speed is Already Zero`
+            )
+        }
+        else{
+            console.log(`${this.brand} ${this.model} is Deaccelerating . Curent Speed: ${this.speed }`
+            )
+        }
+    
+    }
+    Vehicle.prototype.Refuel = function(fuelType){
+        this.fuelType = fuelType
+        console.log(`${this.brand} ${this.model} is Refuelling ${this.fuelType}`
+        )
+    }
+
+    function Car(brand, model, speed,fuelType, NumberofWheels){
+        Vehicle.call(this, brand, model, speed,fuelType, NumberofWheels)
+        this.NumberofWheels = NumberofWheels || 4;
+    }
+
+    
+
+
+    function Aeroplane(brand, model, speed,fuelType, NumberofEngine){
+        Vehicle.call(this, brand, model, speed,fuelType, NumberofEngine)
+        this.NumberofEngine = NumberofEngine || 2;
+    }
+
+    
+
+    
+    Car.prototype = Object.create(Vehicle.prototype)
+    Car.prototype.honk = function(sound){
+        this.sound = sound
+        console.log(`${this.brand} ${this.model} is Honking Sound`)
+    }
+
+
+
+    Aeroplane.prototype = Object.create(Vehicle.prototype)
+    Aeroplane.prototype.takeOff = function(position){
+        this.position = position
+        console.log("Aeroplane Take Off Successfully");
+    }
+
+
+
+    let MyCar = new Car("Mahindra", "Thar", 100, "Diesel")
+    console.log(MyCar);
+    MyCar.accelerate(10)
+
+    MyCar.brake(25)
+    MyCar.honk()
+
+
+
+    let MyAeroplane = new Aeroplane("Air India Express", "Boeing 737-8 Aircraft", 130, "Jet Fuel")
+    console.log(MyAeroplane);
+    
+    MyAeroplane.Refuel("Jet Fuel")
+    
+    MyAeroplane.takeOff()
+
+    
+
+
+</script>
